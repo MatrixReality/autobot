@@ -9,7 +9,7 @@ import websockets
 
 import redis
 
-SOCKET_HOST = '192.168.1.4'
+SOCKET_HOST = '' #TODO: get os.env
 SOCKET_PORT = 50001
 
 HOST_REDIS='localhost'
