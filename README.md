@@ -1,11 +1,4 @@
-8eeee8                                     
-8    8 e   e eeeee eeeee eeeee  eeeee eeeee
-8eeee8 8   8   8   8  88 8   8  8  88   8  
-88   8 8e  8   8e  8   8 8eee8e 8   8   8e 
-88   8 88  8   88  8   8 88   8 8   8   88 
-88   8 88ee8   88  8eee8 88eee8 8eee8   88 
-
-###Autobot
+Autobot
 
 Raspberry Pi robot, plataforma para estudos em diversas areas
 
