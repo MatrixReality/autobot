@@ -1,6 +1,6 @@
 Autobot
 
-Raspberry Pi robot, plataforma para estudos em diversas areas
+Raspberry Pi robot
 
 Projeto em desenvolvimento, funcional na plataforma base. 
 Preparando Gist com a montagem e makefile de instalação
