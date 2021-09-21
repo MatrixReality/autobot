@@ -5,6 +5,7 @@ Raspberry Pi robot
 Projeto em desenvolvimento, funcional na plataforma base. 
 
 Setup:
+
     1. Em um raspibot que seguiu as instruções de montagem/pinagem do autobot (em andamento) com raspbian recente
 
     2. Rodar ´sudo raspi-config´ entrar em ´3 Interface Options´ para habilitar a interface de camera ´P1 Camera´ e o barramento ´P5 I2C´
