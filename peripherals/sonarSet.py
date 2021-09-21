@@ -2,7 +2,6 @@
 
 import json
 import smbus
-import numpy as np
 
 from time import sleep
 
@@ -55,7 +54,6 @@ class sonarSet:
                 sonar_data =  sonar_data.split(",")
                 del(sonar_data[len(sonar_data)-1])
 
-                sonar_data = list(np.float_(sonar_data))
                 sonar_data = dict(zip(sonar_keys, sonar_data))
 
                 if float(sonar_data["center"]) <= limit and not status.colission_detected and status.direction == "Front":

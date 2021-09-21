@@ -12,7 +12,7 @@ VERSION = "AUTOBOT    {}".format(sys.argv[1])
 
 DEV = True
 HAS_SERVO_KIT = True
-HAS_ARDUINO_SONAR_SET = True
+HAS_ARDUINO_SONAR_SET = False
 HAS_DISPLAY_LCD= True
 HAS_MESSAGE_QUEUE=True
 
