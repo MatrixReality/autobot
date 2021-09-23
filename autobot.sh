@@ -13,7 +13,7 @@ echo "     88   8 88ee8   88  8eee8 88eee8 8eee8   88  "
 echo "     "
 echo "     "
 
-VERSION="v1.2"
+VERSION="v1.3"
 REDIS_FOLDER="./bin"
 VENV_PYTHON3="./venv/bin/python3"
 
@@ -54,15 +54,15 @@ cd /home/pi/Dev/autobot/servers
 
 #iniciate socket server to message broker
 echo "Initialize Websocket Python Server"
-$($VENV_PYTHON3 servers/socket_server.py  -t socket_server)&
+$(.$VENV_PYTHON3 socket_server.py  -t socket_server)&
 WEBSOCKET_SERVER_PID=$!
 echo "Websocket Python Server on Pid: $WEBSOCKET_SERVER_PID Done!"
 echo "-------------------------------------"
-sleep 2.5
+sleep 2.6
 
 #iniciate stream cam client (consume messages and view robot cam)
 echo "Initialize Http and Stream Python Server"
-$($VENV_PYTHON3 servers/stream_cam_socket.py $VERSION -t stream_server)&
+$(.$VENV_PYTHON3 stream_cam_socket.py $VERSION -t stream_server)&
 HTTP_SERVER_PID=$!
 echo "Http and Stream Python Server on Pid: $HTTP_SERVER_PID Done!"
 echo "-------------------------------------"
