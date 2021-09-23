@@ -61,7 +61,10 @@ class keyboard:
                     #raise KeyboardInterrupt
                     break
 
-                if char == curses.KEY_UP:
+                elif servo is not None and char in [ord('w'), ord('a'), ord('s'), ord('d'), ord('x')]:
+                    servo.camera_move(char)
+
+                elif char == curses.KEY_UP:
                     if not status.colission_detected:
                         status.in_move = True
                         robot.forward()
@@ -109,9 +112,6 @@ class keyboard:
                     status.msg_display = "Test pan & tilt"
                     display.print(status.msg_display, 2)
                     servo.test_pan_tilt()
-
-                elif servo is not None and char in [ord('w'), ord('a'), ord('s'), ord('d'), ord('x')]:
-                    servo.camera_move(char)
 
                 else:
                     display.print("<< wrong data >>", 2)

@@ -16,7 +16,7 @@ import random
 import websockets
 
 VERSION = "AUTOBOT    {}".format(sys.argv[1]) #TODO: get os.env
-SOCKET_HOST = '' #TODO: get os.env
+SOCKET_HOST = '192.168.1.4' #TODO: get os.env
 SOCKET_PORT = 50001
 
 PAGE="""\

@@ -3,17 +3,28 @@ Autobot
 Raspberry Pi robot
 
 Projeto em desenvolvimento, funcional na plataforma base. 
-Preparando Gist com a montagem e makefile de instalação
+
+Setup:
+
+    1. Em um raspibot que seguiu as instruções de montagem/pinagem do autobot (em andamento) com raspbian recente
+
+    2. Rodar ´sudo raspi-config´ entrar em ´3 Interface Options´ para habilitar a interface de camera ´P1 Camera´ e o barramento ´P5 I2C´
+
+    3. Na raiz do projeto rodar ´make redis-setup´ e logo após ´make venv-setup´
+
+    4. Caso queira rodar a pagina cliente do stream da camera com dados de sonar, alterar a variavel SOCKET_HOST para o ip do raspberry na rede (melhoria nas configurações das envs em andamento)
+
+    5. Por ultimo rodar ´make start´, os serviços de redis, server http, websocket http e por fim o orquestrador do autobot serão iniciados
+
 
 Autostart:
-    Dar permissão ao arquivo de autostart do projeto
-    `sudo chmod 777 autobot.sh`
+    Após o setup inicial
 
     Abrir o arquivo 
     `sudo nano /etc/xdg/lxsession/LXDE-pi/autostart`
 
     adicionar a seguinte linha no final do arquivo de autostart:
-    `@/home/pi/Dev/autobot/autobot.sh`
+    `@/home/pi/SUA-INSTALAÇÃO/autobot/autobot.sh`
 
 Componentes:
     - [Plataforma Rocket-tank](https://www.robocore.net/robotica-robocore/plataforma-robotica-rocket-tank)
@@ -37,3 +48,4 @@ Referencias:
     - [Face Detection](https://learn.pimoroni.com/tutorial/electromechanical/building-a-pan-tilt-face-tracker)
     - [Multiples i2c IMPORTANT](https://medium.com/cemac/creating-multiple-i2c-ports-on-a-raspberry-pi-e31ce72a3eb2)
     - [Install Redis](https://amalgjose.com/2020/08/11/how-to-install-redis-in-raspberry-pi/)
+    - [Redis](#wget http://download.redis.io/releases/redis-6.0.6.tar.gz)
