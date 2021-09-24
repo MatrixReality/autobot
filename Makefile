@@ -27,6 +27,7 @@ redis-clean:
 $(VENV)/bin/activate: requirements.txt
 	rm -rf redis-source
 	sudo chmod 777 autobot.sh
+	cp .env.sample .env
 	python3 -m venv $(VENV)
 	./$(VENV)/bin/pip install -r requirements.txt
 
