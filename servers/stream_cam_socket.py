@@ -7,17 +7,18 @@ import picamera
 import logging
 import socketserver
 import sys
-from threading import Condition
 from http import server
+from dotenv import dotenv_values
+from threading import Condition
 
 import asyncio
 import datetime
 import random
 import websockets
 
-VERSION = "AUTOBOT    {}".format(sys.argv[1]) #TODO: get os.env
-SOCKET_HOST = '192.168.1.4' #TODO: get os.env
-SOCKET_PORT = 50001
+VERSION = "AUTOBOT    {}".format(config["VERSION"])
+WEBSOCKET_HOST = config["WEBSOCKET_HOST"]
+WEBSOCKET_PORT = config["WEBSOCKET_PORT"]
 
 PAGE="""\
 <html>
@@ -86,7 +87,7 @@ PAGE="""\
         }};
     </script>
 </html>
-""".format(VERSION,SOCKET_HOST,SOCKET_PORT)
+""".format(VERSION, WEBSOCKET_HOST, WEBSOCKET_PORT)
 
 class StreamingOutput(object):
     def __init__(self):

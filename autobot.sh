@@ -13,11 +13,12 @@ echo "     88   8 88ee8   88  8eee8 88eee8 8eee8   88  "
 echo "     "
 echo "     "
 
-VERSION="v1.3"
+cd /
+cd /home/pi/Dev/autobot
+
+VERSION=$(head -1 .env | cut -d'=' -f 2)
 REDIS_FOLDER="./bin"
 VENV_PYTHON3="./venv/bin/python3"
-
-cd /
 
 echo "ver.: $VERSION"
 echo "Keep wait for initialize all dependencies"
@@ -38,8 +39,6 @@ sudo dtoverlay i2c-gpio bus=3 i2c_gpio_sda=06 i2c_gpio_scl=07
 echo "Done!"
 echo "-------------------------------------"
 
-cd /
-cd /home/pi/Dev/autobot
 
 #iniciate redis dependency to message broker
 echo "Initialize Redis Server"
@@ -51,6 +50,7 @@ sleep 2.5
 
 cd /
 cd /home/pi/Dev/autobot/servers
+$(../venv/bin/activate)
 
 #iniciate socket server to message broker
 echo "Initialize Websocket Python Server"
@@ -62,7 +62,7 @@ sleep 2.6
 
 #iniciate stream cam client (consume messages and view robot cam)
 echo "Initialize Http and Stream Python Server"
-$(.$VENV_PYTHON3 stream_cam_socket.py $VERSION -t stream_server)&
+$(.$VENV_PYTHON3 stream_cam_socket.py -t stream_server)&
 HTTP_SERVER_PID=$!
 echo "Http and Stream Python Server on Pid: $HTTP_SERVER_PID Done!"
 echo "-------------------------------------"
@@ -73,4 +73,4 @@ cd /home/pi/Dev/autobot
 
 #iniciate autobot control script
 echo "Setting Autobot"
-lxterminal -e $VENV_PYTHON3 autobot.py $VERSION $REDIS_SERVER_PID $WEBSOCKET_SERVER_PID $HTTP_SERVER_PID && echo "Autobot $VERSION Done in another terminal" && exit 0 && cd /
+lxterminal -e $VENV_PYTHON3 autobot.py $REDIS_SERVER_PID $WEBSOCKET_SERVER_PID $HTTP_SERVER_PID && echo "Autobot $VERSION Done in another terminal" && exit 0 && cd /

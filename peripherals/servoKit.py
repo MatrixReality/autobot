@@ -3,16 +3,14 @@
 from time import sleep
 from adafruit_servokit import ServoKit
 
-CHANNELS = 16
-
 class servoKit:
-    def __init__(self, status = None, channels = None):
+    def __init__(self, config, status = None, channels = None):
         self.status = status
 
         # Set channels to the number of servo channels on your kit.
         # 8 for FeatherWing, 16 for Shield/HAT/Bonnet.
         if channels is None:
-            channels = CHANNELS
+            channels = int(config["SERVO_KIT_CHANNELS"])
 
         kit = ServoKit(channels=channels)
 

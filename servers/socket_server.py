@@ -9,11 +9,12 @@ import websockets
 
 import redis
 
-SOCKET_HOST = '192.168.1.4' #TODO: get os.env
-SOCKET_PORT = 50001
+from dotenv import dotenv_values
 
-HOST_REDIS='localhost'
-PORT_REDIS=6379
+WEBSOCKET_HOST = config["WEBSOCKET_HOST"]
+WEBSOCKET_PORT = config["WEBSOCKET_PORT"]
+HOST_REDIS = config["HOST_REDIS"]
+PORT_REDIS = config["PORT_REDIS"]
 
 redis_service = redis.StrictRedis(host=HOST_REDIS, port=PORT_REDIS, db=0)
 
@@ -39,7 +40,7 @@ async def time(websocket, path):
         
 
 async def websocketserver():
-    async with websockets.serve(time, SOCKET_HOST, SOCKET_PORT):
+    async with websockets.serve(time, WEBSOCKET_HOST, WEBSOCKET_PORT):
         await asyncio.Future()  # run forever
 
 
