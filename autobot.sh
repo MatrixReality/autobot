@@ -16,7 +16,7 @@ echo "     "
 cd /
 cd /home/pi/Dev/autobot
 
-VERSION=$(head -1 .env | cut -d'=' -f 2)
+VERSION=$(head -n 1 .env | tail -n 1 | cut -d'=' -f 2)
 REDIS_FOLDER="./bin"
 VENV_PYTHON3="./venv/bin/python3"
 
