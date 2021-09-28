@@ -24,7 +24,7 @@ Autostart:
     `sudo nano /etc/xdg/lxsession/LXDE-pi/autostart`
 
     adicionar a seguinte linha no final do arquivo de autostart:
-    `@/home/pi/Dev/autobot/start.sh`
+    `@/home/pi/SUA-INSTALAÇÃO/autobot/autobot.sh`
 
 Componentes:
     - [Plataforma Rocket-tank](https://www.robocore.net/robotica-robocore/plataforma-robotica-rocket-tank)
