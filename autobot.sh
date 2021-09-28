@@ -2,6 +2,9 @@
 # This script is referred in the end of autostart file:
 # sudo nano /etc/xdg/lxsession/LXDE-pi/autostart
 
+cd /
+cd /home/pi/Dev/autobot
+
 echo "     "
 echo "     "
 echo "     8eeee8                                      "
@@ -13,10 +16,8 @@ echo "     88   8 88ee8   88  8eee8 88eee8 8eee8   88  "
 echo "     "
 echo "     "
 
-cd /
-cd /home/pi/Dev/autobot
-
 VERSION=$(head -n 1 .env | tail -n 1 | cut -d'=' -f 2)
+PROJECT_FOLDER=$PWD
 REDIS_FOLDER="./bin"
 VENV_PYTHON3="./venv/bin/python3"
 
@@ -39,7 +40,6 @@ sudo dtoverlay i2c-gpio bus=3 i2c_gpio_sda=06 i2c_gpio_scl=07
 echo "Done!"
 echo "-------------------------------------"
 
-
 #iniciate redis dependency to message broker
 echo "Initialize Redis Server"
 $(./bin/redis-server)&
@@ -48,9 +48,7 @@ echo "Redis Server on Pid: $REDIS_SERVER_PID Done!"
 echo "-------------------------------------"
 sleep 2.5
 
-cd /
-cd /home/pi/Dev/autobot/servers
-$(../venv/bin/activate)
+cd ./servers
 
 #iniciate socket server to message broker
 echo "Initialize Websocket Python Server"
@@ -62,14 +60,13 @@ sleep 2.6
 
 #iniciate stream cam client (consume messages and view robot cam)
 echo "Initialize Http and Stream Python Server"
-$(.$VENV_PYTHON3 stream_cam_socket.py -t stream_server)&
+$(.$VENV_PYTHON3 stream_cam_socket.py $VERSION -t stream_server)&
 HTTP_SERVER_PID=$!
 echo "Http and Stream Python Server on Pid: $HTTP_SERVER_PID Done!"
 echo "-------------------------------------"
 sleep 2.5
 
-cd /
-cd /home/pi/Dev/autobot
+cd ..
 
 #iniciate autobot control script
 echo "Setting Autobot"

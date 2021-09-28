@@ -6,11 +6,11 @@ import asyncio
 import datetime
 import random
 import websockets
-
 import redis
 
 from dotenv import dotenv_values
 
+config = dotenv_values("../.env")
 WEBSOCKET_HOST = config["WEBSOCKET_HOST"]
 WEBSOCKET_PORT = config["WEBSOCKET_PORT"]
 HOST_REDIS = config["HOST_REDIS"]
@@ -35,9 +35,7 @@ async def time(websocket, path):
             msg = str(distance_log)
             print(msg)
             await websocket.send(msg)
-            #redis_service.delete("distance_log")
-        
-        
+            #redis_service.delete("distance_log")        
 
 async def websocketserver():
     async with websockets.serve(time, WEBSOCKET_HOST, WEBSOCKET_PORT):

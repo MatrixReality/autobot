@@ -16,6 +16,8 @@ import datetime
 import random
 import websockets
 
+config = dotenv_values("../.env")
+
 VERSION = "AUTOBOT    {}".format(config["VERSION"])
 WEBSOCKET_HOST = config["WEBSOCKET_HOST"]
 WEBSOCKET_PORT = config["WEBSOCKET_PORT"]
