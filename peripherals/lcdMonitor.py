@@ -5,12 +5,14 @@ import json
 from peripherals import drivers
 from datetime import datetime
 
-DISPLAY_LCD_BUS = 3
-DISPLAY_LCD_ADDR = 0x27
-DISPLAY_COLUMMS = 16
 
 class lcdMonitor:
-    def __init__(self, message_queue = None, display_columms = None, bus = None, addr = None):
+    def __init__(self, config, message_queue = None, display_columms = None, bus = None, addr = None):
+
+        DISPLAY_LCD_BUS = int(config["DISPLAY_LCD_BUS"])
+        DISPLAY_LCD_ADDR = int(config["DISPLAY_LCD_ADDR"], 16)
+        DISPLAY_COLUMMS = int(config["DISPLAY_COLUMMS"])
+
         self.display_columms = display_columms
         if display_columms is None:
             self.display_columms = DISPLAY_COLUMMS

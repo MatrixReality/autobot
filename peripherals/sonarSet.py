@@ -5,25 +5,20 @@ import smbus
 
 from time import sleep
 
-LOG_COLISSION = True
-LIMIT_COLISSION_IN_CM = 15
-
-ARDUINO_SONAR_SET_BUS = 2
-ARDUINO_SONAR_SET_ADDR = 0x18
-
 class sonarSet:
-    def __init__(self, status, robot, queue = None, bus = None, addr = None):
+    def __init__(self, config, status, robot, queue = None, bus = None, addr = None):
+        self.config = config
         self.status = status
         self.robot = robot
         self.queue = queue
 
         self.bus = bus
         if bus is None:
-            self.bus = ARDUINO_SONAR_SET_BUS
+            self.bus = int(config["ARDUINO_SONAR_SET_BUS"])
 
         self.addr = addr
         if addr is None:
-            self.addr = ARDUINO_SONAR_SET_ADDR
+            self.addr = int(config["ARDUINO_SONAR_SET_ADDR"], 16)
 
         self.i2c_interface = smbus.SMBus(self.bus)
 
@@ -42,8 +37,8 @@ class sonarSet:
 
     def worker(self):
         status = self.status
-        log_colission = LOG_COLISSION
-        limit = LIMIT_COLISSION_IN_CM
+        log_colission = self.config["LOG_COLISSION"].lower() in ('true', '1', 't')
+        limit = int(self.config["LIMIT_COLISSION_IN_CM"])
 
         last_sonar_data = None
         sonar_keys = ("center", "centerRight", "back", "centerLeft")
