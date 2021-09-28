@@ -2,6 +2,7 @@
 # This script is referred in the end of autostart file:
 # sudo nano /etc/xdg/lxsession/LXDE-pi/autostart
 
+#TODO: fix pwd variable for automatic folder start 
 cd /
 cd /home/pi/Dev/autobot
 
