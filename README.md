@@ -2,7 +2,9 @@ Autobot
 
 Raspberry Pi robot
 
-Projeto em desenvolvimento, funcional na plataforma base. 
+Projeto em desenvolvimento, funcional na plataforma base (Raspberry 3b+ Rasbpian recente). 
+
+![Estrutura](./docs/first_map.png?raw=true "estrutura")
 
 Setup:
 
@@ -25,6 +27,8 @@ Autostart:
 
     adicionar a seguinte linha no final do arquivo de autostart:
     `@/home/pi/SUA-INSTALAÇÃO/autobot/autobot.sh`
+    
+![Imagem da plataforma](./docs/autobot_tank.jpg?raw=true "Imagem da plataforma")
 
 Componentes:
     - [Plataforma Rocket-tank](https://www.robocore.net/robotica-robocore/plataforma-robotica-rocket-tank)
