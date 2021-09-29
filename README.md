@@ -28,9 +28,7 @@ Autostart:
     adicionar a seguinte linha no final do arquivo de autostart:
     `@/home/pi/SUA-INSTALAÇÃO/autobot/autobot.sh`
     
-<center>
 ![Imagem da plataforma](./docs/autobot_tank.jpg?raw=true "Imagem da plataforma")
-</center>
 
 Componentes:
     - [Plataforma Rocket-tank](https://www.robocore.net/robotica-robocore/plataforma-robotica-rocket-tank)
