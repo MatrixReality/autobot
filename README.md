@@ -4,7 +4,7 @@ Raspberry Pi robot
 
 Projeto em desenvolvimento, funcional na plataforma base (Raspberry 3b+ Rasbpian recente). 
 
-![Estrutura](./docs/to/first_map.png?raw=true "estrutura")
+![Estrutura](./docs/first_map.png?raw=true "estrutura")
 
 Setup:
 
